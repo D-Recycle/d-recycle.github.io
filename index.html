@@ -62,7 +62,7 @@ document.getElementById('pwa-manifest').href = URL.createObjectURL(blob);
 .st-btn.active{border-color:var(--g3);background:var(--g8);color:var(--g1);}
 .st-inp{width:52px;border:1.5px solid var(--border);border-radius:9px;padding:4px 6px;
   font-size:12px;font-weight:700;text-align:center;font-family:'Sarabun',sans-serif;color:var(--text);
-  background:#fff;outline:none;margin-left:10px;}
+  background:#fff;outline:none;}
 .st-inp:focus{border-color:var(--g3);}
 .st-unit{font-size:11px;color:var(--muted);font-weight:600;}
 html,body{height:100%;background:var(--bg);font-family:'Sarabun',sans-serif;font-size:15px;}
@@ -1891,7 +1891,7 @@ function renderStBtns(key){
     `<button class="st-btn${s===cur?' active':''}" onclick="setSt('${key}',${s})">${s}</button>`
   ).join('');
   el.innerHTML = presetBtns +
-    `<span style="color:var(--border);font-size:18px;margin:0 2px;">|</span>` +
+    `<span style="width:3px;height:22px;background:var(--border);flex-shrink:0;border-radius:2px;"></span>` +
     `<input class="st-inp" id="st-inp-${key}" type="number" min="6" max="72" step="1"
       value="${cur}" onchange="setSt('${key}',parseFloat(this.value)||${cfg.def})"
       title="พิมพ์ขนาดเอง">` +
