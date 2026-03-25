@@ -40,7 +40,31 @@ document.getElementById('pwa-manifest').href = URL.createObjectURL(blob);
   --card:#ffffff;--card2:#f8fffe;
   --white:#fff;--bg:#f2faf5;--text:#0c1f14;--muted:#4d7060;--border:#b0d8c0;
   --danger:#dc2626;--info:#1d4ed8;
+  /* Settings font sizes - defaults */
+  --fs-home-header:10px;
+  --fs-home-btn:15px;
+  --fs-pur-name:15px;
+  --fs-pur-items:15px;
+  --fs-pur-search:16px;
+  --fs-bill-preview:11px;
+  --fs-bill-print:9pt;
+  --fs-custs:15px;
+  --fs-prods:15px;
 }
+.st-sec{background:var(--g8);border:1.5px solid var(--g6);border-radius:16px;padding:12px 14px;margin-bottom:12px;}
+.st-title{font-size:14px;font-weight:800;color:var(--g1);margin-bottom:10px;}
+.st-row{display:flex;align-items:center;gap:8px;margin-bottom:8px;}
+.st-row:last-child{margin-bottom:0;}
+.st-lbl{font-size:12px;font-weight:600;color:var(--muted);width:72px;flex-shrink:0;}
+.st-ctrl{display:flex;align-items:center;gap:5px;flex:1;}
+.st-btn{padding:5px 8px;border-radius:9px;border:1.5px solid var(--border);background:#fff;
+  cursor:pointer;font-family:'Sarabun',sans-serif;font-size:12px;font-weight:700;color:var(--muted);}
+.st-btn.active{border-color:var(--g3);background:var(--g8);color:var(--g1);}
+.st-inp{width:52px;border:1.5px solid var(--border);border-radius:9px;padding:4px 6px;
+  font-size:12px;font-weight:700;text-align:center;font-family:'Sarabun',sans-serif;color:var(--text);
+  background:#fff;outline:none;margin-left:10px;}
+.st-inp:focus{border-color:var(--g3);}
+.st-unit{font-size:11px;color:var(--muted);font-weight:600;}
 html,body{height:100%;background:var(--bg);font-family:'Sarabun',sans-serif;font-size:15px;}
 
 .page{display:none;flex-direction:column;height:100vh;background:var(--bg);}
@@ -110,7 +134,7 @@ select{appearance:none;
     rgba(0,0,0,0.75) 5%,black 7%,black 93%,
     rgba(0,0,0,0.75) 95%,rgba(0,0,0,0.35) 97%,
     rgba(0,0,0,0.08) 98.5%,transparent 100%);}
-.hero-sub{text-align:center;color:rgba(255,255,255,0.85);font-size:11px;
+.hero-sub{text-align:center;color:rgba(255,255,255,0.85);font-size:var(--fs-home-header);
   padding:1px 16px 4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
 
 .mgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:12px 13px 14px;background:var(--bg);}
@@ -124,15 +148,15 @@ select{appearance:none;
 .mi2{background:linear-gradient(135deg,#fed7aa,#fdba74);}
 .mi3{background:linear-gradient(135deg,#dbeafe,#bfdbfe);}
 .mi4{background:linear-gradient(135deg,#fef3c7,#fde68a);}
-.mlbl{font-size:18px;font-weight:800;color:var(--g1);line-height:1.4;}
-.msub{font-size:15px;color:var(--muted);margin-top:3px;}
+.mlbl{font-size:var(--fs-home-btn);font-weight:800;color:var(--g1);line-height:1.4;}
+.msub{font-size:var(--fs-home-btn);color:var(--muted);margin-top:3px;}
 
 .prow{background:var(--g8);border:1.5px solid var(--g6);border-radius:16px;padding:12px 14px;margin-bottom:10px;}
 .prnrow{display:flex;justify-content:space-between;align-items:center;}
-.prn{font-size:20px;font-weight:700;color:var(--g1);}
+.prn{font-size:var(--fs-pur-items);font-weight:700;color:var(--g1);}
 .wzone{margin-top:9px;background:var(--o6);border:1.5px solid var(--o5);border-radius:13px;padding:10px 12px;}
 .wf{width:100%;border:1.5px solid var(--o5);border-radius:10px;
-  padding:9px 12px;font-size:16px;font-weight:600;color:var(--text);
+  padding:9px 12px;font-size:var(--fs-pur-items);font-weight:600;color:var(--text);
   background:#fff;outline:none;font-family:'Sarabun',monospace;}
 .wf:focus{border-color:var(--o2);box-shadow:0 0 0 3px rgba(224,112,16,0.1);}
 .ptot-row{display:flex;justify-content:space-between;align-items:center;margin-top:9px;flex-wrap:wrap;gap:4px;}
@@ -151,16 +175,16 @@ select{appearance:none;
 .bcard{background:#fff;border-radius:16px;padding:13px 15px;margin-bottom:10px;
   box-shadow:0 2px 10px rgba(10,92,50,0.08);border:1px solid var(--border);cursor:pointer;}
 .bcard:active{opacity:0.85;}
-.bid{font-size:15px;font-weight:700;color:var(--g1);}
+.bid{font-size:var(--fs-pur-items);font-weight:700;color:var(--g1);}
 .bdate{font-size:13px;color:var(--muted);margin-top:2px;}
 .bmeta{font-size:13px;color:var(--muted);margin-top:3px;}
-.btot{font-size:20px;font-weight:800;color:var(--o1);}
+.btot{font-size:var(--fs-pur-items);font-weight:800;color:var(--o1);}
 .brow{display:flex;justify-content:space-between;align-items:flex-start;}
 .bacts{display:flex;gap:6px;margin-top:10px;}
 
 .ccard{background:#fff;border-radius:15px;padding:12px 14px;margin-bottom:8px;
   box-shadow:0 2px 8px rgba(10,92,50,0.07);border:1px solid rgba(176,216,192,0.4);}
-.cn{font-size:15px;font-weight:700;color:var(--text);}
+.cn{font-size:var(--fs-custs);font-weight:700;color:var(--text);}
 .cp{font-size:13px;color:var(--muted);margin-top:2px;}
 .tbadge{display:inline-block;padding:3px 10px;border-radius:9px;font-size:12px;font-weight:700;}
 .tr{background:linear-gradient(135deg,#dbeafe,#bfdbfe);color:#1e3a8a;}
@@ -169,9 +193,9 @@ select{appearance:none;
 .prcard{background:#fff;border-radius:15px;padding:12px 14px;margin-bottom:8px;
   box-shadow:0 2px 8px rgba(10,92,50,0.07);border:1px solid rgba(176,216,192,0.4);}
 .prchips{display:flex;gap:8px;margin-top:6px;flex-wrap:wrap;}
-.prchip{background:var(--g8);border:1px solid var(--g6);border-radius:8px;padding:4px 11px;font-size:13px;color:var(--muted);}
+.prchip{background:var(--g8);border:1px solid var(--g6);border-radius:8px;padding:4px 11px;font-size:var(--fs-prods);color:var(--muted);}
 .prchip b{color:var(--g1);}
-.prchip-o{background:var(--o6);border:1px solid var(--o5);border-radius:8px;padding:4px 11px;font-size:13px;color:var(--muted);}
+.prchip-o{background:var(--o6);border:1px solid var(--o5);border-radius:8px;padding:4px 11px;font-size:var(--fs-prods);color:var(--muted);}
 .prchip-o b{color:var(--o1);}
 
 .swrap{position:relative;margin-bottom:12px;}
@@ -242,17 +266,17 @@ select{appearance:none;
 .mi2{background:linear-gradient(135deg,#fed7aa,#fdba74);}
 .mi3{background:linear-gradient(135deg,#dbeafe,#bfdbfe);}
 .mi4{background:linear-gradient(135deg,#fef3c7,#fde68a);}
-.mlbl{font-size:15px;font-weight:700;color:var(--g1);line-height:1.4;}
-.msub{font-size:15px;color:var(--muted);margin-top:3px;}
+.mlbl{font-size:var(--fs-home-btn);font-weight:700;color:var(--g1);line-height:1.4;}
+.msub{font-size:var(--fs-home-btn);color:var(--muted);margin-top:3px;}
 
 .prow{background:linear-gradient(135deg,var(--g8),#fff);border:1.5px solid var(--g6);
   border-radius:16px;padding:12px 14px;margin-bottom:10px;}
 .prnrow{display:flex;justify-content:space-between;align-items:center;}
-.prn{font-size:20px;font-weight:700;color:var(--g1);}
+.prn{font-size:var(--fs-pur-items);font-weight:700;color:var(--g1);}
 .wzone{margin-top:9px;background:var(--o6);border:1.5px solid var(--o5);
   border-radius:13px;padding:10px 12px;}
 .wf{width:100%;border:1.5px solid var(--o5);border-radius:10px;
-  padding:9px 12px;font-size:16px;font-weight:600;color:var(--text);
+  padding:9px 12px;font-size:var(--fs-pur-items);font-weight:600;color:var(--text);
   background:#fff;outline:none;font-family:'Sarabun',monospace;}
 .wf:focus{border-color:var(--o2);box-shadow:0 0 0 3px rgba(224,112,16,0.12);}
 .ptot-row{display:flex;justify-content:space-between;align-items:center;
@@ -272,16 +296,16 @@ select{appearance:none;
 .bcard{background:#fff;border-radius:16px;padding:13px 15px;margin-bottom:10px;
   box-shadow:0 2px 10px rgba(10,92,50,0.09);border:1px solid rgba(176,216,192,0.4);cursor:pointer;}
 .bcard:active{opacity:0.85;}
-.bid{font-size:15px;font-weight:700;color:var(--g1);}
+.bid{font-size:var(--fs-pur-items);font-weight:700;color:var(--g1);}
 .bdate{font-size:13px;color:var(--muted);margin-top:2px;}
 .bmeta{font-size:13px;color:var(--muted);margin-top:3px;}
-.btot{font-size:20px;font-weight:800;color:var(--o1);}
+.btot{font-size:var(--fs-pur-items);font-weight:800;color:var(--o1);}
 .brow{display:flex;justify-content:space-between;align-items:flex-start;}
 .bacts{display:flex;gap:6px;margin-top:10px;}
 
 .ccard{background:#fff;border-radius:15px;padding:12px 14px;margin-bottom:8px;
   box-shadow:0 2px 8px rgba(10,92,50,0.08);border:1px solid rgba(176,216,192,0.4);}
-.cn{font-size:15px;font-weight:700;color:var(--text);}
+.cn{font-size:var(--fs-custs);font-weight:700;color:var(--text);}
 .cp{font-size:13px;color:var(--muted);margin-top:2px;}
 .tbadge{display:inline-block;padding:3px 10px;border-radius:9px;font-size:12px;font-weight:700;}
 .tr{background:linear-gradient(135deg,#dbeafe,#bfdbfe);color:#1e3a8a;}
@@ -292,10 +316,10 @@ select{appearance:none;
   box-shadow:0 2px 8px rgba(10,92,50,0.08);border:1px solid rgba(176,216,192,0.4);}
 .prchips{display:flex;gap:8px;margin-top:6px;flex-wrap:wrap;}
 .prchip{background:var(--g8);border:1px solid var(--g6);border-radius:8px;
-  padding:4px 11px;font-size:13px;color:var(--muted);}
+  padding:4px 11px;font-size:var(--fs-prods);color:var(--muted);}
 .prchip b{color:var(--g1);}
 .prchip-o{background:var(--o6);border:1px solid var(--o5);border-radius:8px;
-  padding:4px 11px;font-size:13px;color:var(--muted);}
+  padding:4px 11px;font-size:var(--fs-prods);color:var(--muted);}
 .prchip-o b{color:var(--o1);}
 
 .swrap{position:relative;margin-bottom:12px;}
@@ -367,21 +391,28 @@ select{appearance:none;
 }
 #print-content{display:none;}
 .psh{width:100%;display:grid;grid-template-columns:1fr 1fr;gap:15mm;align-items:start;font-family:'Sarabun',sans-serif;}
-.ph{border:0.5mm solid #333;border-radius:1mm;padding:5mm;height:auto;}
+.ph{border:0.5mm solid #333;border-radius:1mm;padding:5mm 0 0 0;height:auto;box-sizing:border-box;overflow:hidden;}
 .ph-top{display:flex;align-items:stretch;gap:3mm;margin-bottom:3mm;
-  padding-bottom:3mm;border-bottom:0.3mm solid #ccc;}
+  padding:0 5mm 3mm 5mm;border-bottom:0.3mm solid #ccc;}
 .ph-logo{flex-shrink:0;border:0.3mm solid #ccc;overflow:hidden;}
 .ph-info{font-size:8pt;flex:1;line-height:1.6;color:#222;}
 .ph-copy{font-size:10pt;font-weight:700;border:0.4mm solid #444;
   padding:1mm 3mm;border-radius:1mm;align-self:flex-start;color:#111;}
-.ptable{width:100%;border-collapse:collapse;font-size:11pt;}
+.ptable{width:100%;margin:0;border-collapse:collapse;font-size:var(--fs-bill-print);table-layout:fixed;}
 .ptable thead{display:table-header-group;}
 .ptable tfoot{display:table-footer-group;}
-.ptable th{background:#f0f0f0;font-weight:700;padding:2mm 2.5mm;
-  border:0.3mm solid #bbb;text-align:center;color:#111;}
-.ptable td{padding:2mm 2.5mm;border:0.3mm solid #ddd;text-align:center;color:#222;word-break:break-all;}
+.ptable th{background:#e0e0e0;font-weight:700;padding:1.5mm 1.5mm;
+  border:0.4mm solid #888;text-align:center;color:#111;}
+.ptable th:first-child,.ptable td:first-child{border-left:none;}
+.ptable th:last-child,.ptable td:last-child{border-right:none;}
+.ptable td{padding:1.5mm 1.5mm;border:0.4mm solid #aaa;text-align:center;color:#222;overflow-wrap:break-word;word-break:break-word;}
 .ptable td.tl{text-align:left;}
-.ptable tr.sum td{font-weight:700;border-top:0.5mm solid #888;background:#f8f8f8;color:#111;}
+.ptable tbody tr:nth-child(even) td{background:#f0f0f0;}
+.ptable tbody tr:nth-child(odd) td{background:#fff;}
+.ptable tr.sum td{font-weight:700;border-top:0.6mm solid #555;background:#ddd;color:#111;border:0.4mm solid #888;}
+.ptable tfoot tr.sum td:first-child{border-left:none;}
+.ptable tfoot tr.sum td:last-child{border-right:none;}
+.ptable tfoot tr.sum td{border-bottom:none;}
 
 @media print{
   .ptable tr{page-break-inside:avoid;}
@@ -411,7 +442,7 @@ select{appearance:none;
       <div style="position:absolute;top:0;left:0;right:0;height:2px;
         background:linear-gradient(90deg,transparent,rgba(56,201,110,0.5),rgba(56,201,110,0.8),rgba(56,201,110,0.5),transparent);
         animation:shimmer 3s ease-in-out infinite;"></div>
-      <div style="text-align:center;color:rgba(255,255,255,0.88);font-size:10px;font-weight:700;
+      <div style="text-align:center;color:rgba(255,255,255,0.88);font-size:var(--fs-home-header);font-weight:700;
         letter-spacing:0.6px;display:flex;align-items:center;justify-content:center;gap:6px;">
         <span style="font-size:12px;">🌿</span>
         ดำรงค์ทรัพย์ ค้าของเก่า
@@ -473,11 +504,18 @@ select{appearance:none;
       <span style="font-size:18px;">🌱</span>
       <div id="save-status" style="flex:1;font-size:11px;color:var(--g1);font-weight:600;">กำลังโหลด...</div>
       <button onclick="clearAllData()"
-        style="display:inline-flex;align-items:center;gap:4px;cursor:pointer;
+        style="display:inline-flex;align-items:center;justify-content:center;gap:4px;cursor:pointer;
           background:#fff5f5;border:1.5px solid #fca5a5;border-radius:10px;
-          padding:5px 10px;font-family:'Sarabun',sans-serif;">
+          padding:5px 0;width:80px;font-family:'Sarabun',sans-serif;">
         <span style="font-size:13px;">🗑</span>
         <span style="font-size:11px;font-weight:700;color:#dc2626;">ล้างข้อมูล</span>
+      </button>
+      <button onclick="openSettings()"
+        style="display:inline-flex;align-items:center;justify-content:center;gap:4px;cursor:pointer;
+          background:#eff6ff;border:1.5px solid #93c5fd;border-radius:10px;
+          padding:5px 0;width:80px;font-family:'Sarabun',sans-serif;">
+        <span style="font-size:13px;">⚙️</span>
+        <span style="font-size:11px;font-weight:700;color:#1d4ed8;">ตั้งค่า</span>
       </button>
     </div>
 
@@ -495,6 +533,79 @@ select{appearance:none;
       <span style="font-size:18px;color:rgba(255,255,255,0.8);">›</span>
     </div>
 
+  </div>
+</div>
+
+<!-- ═══ SETTINGS MODAL ═══ -->
+<div id="settings-modal" style="display:none;position:fixed;inset:0;z-index:999;
+  background:rgba(6,18,10,0.6);align-items:flex-end;justify-content:center;">
+  <div style="background:#fff;border-radius:26px 26px 0 0;padding:20px 18px 36px;
+    width:100%;max-width:480px;max-height:88vh;overflow-y:auto;box-shadow:0 -4px 30px rgba(0,0,0,0.2);">
+    <div style="width:40px;height:4px;background:var(--border);border-radius:2px;margin:0 auto 16px;"></div>
+    <div style="font-size:18px;font-weight:800;color:var(--text);margin-bottom:16px;text-align:center;">⚙️ ตั้งค่าการแสดงผล</div>
+
+    <!-- Section 1: หน้าหลัก -->
+    <div class="st-sec">
+      <div class="st-title">🏠 หน้าหลัก</div>
+      <div class="st-row">
+        <span class="st-lbl">หัวกระดาษ</span>
+        <div class="st-ctrl" id="st-home-header"></div>
+      </div>
+      <div class="st-row">
+        <span class="st-lbl">ปุ่มกด</span>
+        <div class="st-ctrl" id="st-home-btn"></div>
+      </div>
+    </div>
+
+    <!-- Section 2: รายการรับซื้อ -->
+    <div class="st-sec">
+      <div class="st-title">📋 รายการรับซื้อ</div>
+      <div class="st-row">
+        <span class="st-lbl">ชื่อลูกค้า</span>
+        <div class="st-ctrl" id="st-pur-name"></div>
+      </div>
+      <div class="st-row">
+        <span class="st-lbl">รายการสินค้า</span>
+        <div class="st-ctrl" id="st-pur-items"></div>
+      </div>
+      <div class="st-row">
+        <span class="st-lbl">เลือกสินค้า</span>
+        <div class="st-ctrl" id="st-pur-search"></div>
+      </div>
+    </div>
+
+    <!-- Section 3: บิล -->
+    <div class="st-sec">
+      <div class="st-title">🧾 บิลรายการรับซื้อ</div>
+      <div class="st-row">
+        <span class="st-lbl">Preview</span>
+        <div class="st-ctrl" id="st-bill-preview"></div>
+      </div>
+      <div class="st-row">
+        <span class="st-lbl">พิมพ์จริง</span>
+        <div class="st-ctrl" id="st-bill-print"></div>
+      </div>
+    </div>
+
+    <!-- Section 4: ลูกค้า -->
+    <div class="st-sec">
+      <div class="st-title">👥 รายชื่อลูกค้า</div>
+      <div class="st-row">
+        <span class="st-lbl">รายชื่อ</span>
+        <div class="st-ctrl" id="st-custs"></div>
+      </div>
+    </div>
+
+    <!-- Section 5: สินค้า -->
+    <div class="st-sec">
+      <div class="st-title">💰 รายการสินค้า ราคารับซื้อ</div>
+      <div class="st-row">
+        <span class="st-lbl">รายการสินค้า</span>
+        <div class="st-ctrl" id="st-prods"></div>
+      </div>
+    </div>
+
+    <button onclick="closeSettings()" class="btn bp bfull" style="margin-top:8px;">✅ บันทึกและปิด</button>
   </div>
 </div>
 
@@ -536,7 +647,8 @@ select{appearance:none;
               background:#fff;outline:none;"
               oninput="filterProdDD(this.value)"
               onfocus="filterProdDD(this.value)"
-              onblur="setTimeout(()=>hideProdDD(),200)">
+              onblur="setTimeout(()=>hideProdDD(),200)"
+              id="prod-search-input">
             <input type="hidden" id="prod-sel" value="">
             <div id="prod-dd" style="display:none;position:absolute;top:100%;left:0;right:0;
               background:#fff;border:1.5px solid var(--border);border-radius:10px;
@@ -951,8 +1063,8 @@ function filterProdDD(q){
   } else {
     dd.innerHTML = list.map(p => {
       const added = items.find(i => String(i.pid)===String(p.id));
-      const bg = added ? 'background:#e8f5ee;' : 'background:#fff;';
-      const color = added ? 'color:#0a5c32;font-weight:700;' : '';
+      const bg = added ? 'background:#ffe4f0;' : 'background:#fff;';
+      const color = added ? 'color:#c2185b;font-weight:700;' : '';
       const tag = added ? ' ✓' : '';
       return '<div onclick="pickProdDD(\'' + p.id + '\',\'' + p.name + '\')" '+
         'style="padding:10px 14px;font-size:15px;cursor:pointer;border-bottom:1px solid var(--border);'+bg+color+'">'+
@@ -1098,45 +1210,55 @@ function wrapAt(str,n){
 }
 function billHalf(b,copy){
   const MIN_ROWS = 10;
+  const fs = getSt('bill-preview');
   const dataRows = b.items.map(it=>`<tr>
-    <td class="tl" style="text-align:left;padding:2px 4px;">${it.name}</td>
-    <td style="text-align:center;padding:2px 4px;">${wrapAt(it.formula+"="+it.computed,20)}</td>
-    <td style="text-align:center;padding:2px 4px;">${fmt(it.price)}</td>
-    <td style="text-align:right;padding:2px 4px;">${fmt(it.total)}</td>
+    <td style="text-align:left;padding:2px 3px;overflow:hidden;overflow-wrap:break-word;word-break:break-word;">${it.name}</td>
+    <td style="text-align:left;padding:2px 3px;overflow-wrap:break-word;word-break:break-all;">${it.formula}</td>
+    <td style="text-align:center;padding:2px 3px;overflow:hidden;white-space:nowrap;">${it.computed}</td>
+    <td style="text-align:center;padding:2px 3px;overflow:hidden;white-space:nowrap;">${fmt(it.price)}</td>
+    <td style="text-align:right;padding:2px 3px;overflow:hidden;white-space:nowrap;">${fmt(it.total)}</td>
   </tr>`).join('');
   const emptyCount = Math.max(0, MIN_ROWS - b.items.length);
   const emptyRows = Array(emptyCount).fill(`<tr style="height:16px;">
-    <td style="padding:2px 4px;">&nbsp;</td><td></td><td></td><td></td>
+    <td style="padding:2px 3px;">&nbsp;</td><td></td><td></td><td></td><td></td>
   </tr>`).join('');
   return `<div class="bhalf" style="display:flex;flex-direction:column;">
     <div class="bhtop">
       <img src="data:image/jpeg;base64,${LOGO}" alt="logo" style="height:40px;width:auto;object-fit:contain;border:0.8px solid #555;flex-shrink:0;">
-      <div style="flex:1;font-size:11px;color:#111;line-height:1.6;padding:0 4px;">
-        <b style="font-size:11px;">ดำรงค์ทรัพย์ ค้าของเก่า</b><br>
+      <div style="flex:1;font-size:${fs}px;color:#111;line-height:1.6;padding:0 4px;">
+        <b style="font-size:${fs}px;">ดำรงค์ทรัพย์ ค้าของเก่า</b><br>
         โทร 034-498-712 มือถือ 086-548-4758<br>
         วันที่ ${b.date} เวลา ${b.time} &nbsp;|&nbsp; ลูกค้า: ${b.cname}
       </div>
-      <div style="font-size:11px;font-weight:700;border:1.5px solid #111;padding:0 10px;
+      <div style="font-size:${fs}px;font-weight:700;border:1.5px solid #111;padding:0 10px;
         display:flex;align-items:center;justify-content:center;flex-shrink:0;align-self:stretch;
         min-width:40px;">${copy}</div>
     </div>
-    <table style="width:100%;border-collapse:collapse;font-size:11px;flex:1;">
+    <table style="width:100%;border-collapse:collapse;font-size:${fs}px;flex:1;table-layout:fixed;">
+      <colgroup>
+        <col style="width:24%;">
+        <col style="width:31%;">
+        <col style="width:15%;">
+        <col style="width:15%;">
+        <col style="width:15%;">
+      </colgroup>
       <thead>
-        <tr style="background:#f0f0f0;">
-          <th style="border:0.5px solid #888;padding:3px 4px;text-align:center;font-weight:700;">รายการ</th>
-          <th style="border:0.5px solid #888;padding:3px 4px;text-align:center;font-weight:700;">น้ำหนัก</th>
-          <th style="border:0.5px solid #888;padding:3px 4px;text-align:center;font-weight:700;">ราคา</th>
-          <th style="border:0.5px solid #888;padding:3px 4px;text-align:center;font-weight:700;">รวม</th>
+        <tr style="background:#e0e0e0;">
+          <th style="border:0.5px solid #888;padding:2px 3px;text-align:center;font-weight:700;">รายการ</th>
+          <th style="border:0.5px solid #888;padding:2px 3px;text-align:center;font-weight:700;">น้ำหนัก</th>
+          <th style="border:0.5px solid #888;padding:2px 3px;text-align:center;font-weight:700;">คิด</th>
+          <th style="border:0.5px solid #888;padding:2px 3px;text-align:center;font-weight:700;">ราคา</th>
+          <th style="border:0.5px solid #888;padding:2px 3px;text-align:center;font-weight:700;">รวม</th>
         </tr>
       </thead>
       <tbody>
         ${dataRows}${emptyRows}
       </tbody>
       <tfoot>
-        <tr style="background:#f8f8f8;border-top:1px solid #555;">
-          <td colspan="2" style="border:0.5px solid #888;padding:3px 4px;text-align:center;font-weight:700;">รวม</td>
-          <td style="border:0.5px solid #888;padding:3px 4px;"></td>
-          <td style="border:0.5px solid #888;padding:3px 4px;text-align:right;font-weight:700;">${fmt(b.grand)}</td>
+        <tr style="background:#ddd;border-top:1px solid #555;">
+          <td colspan="3" style="border:0.5px solid #888;padding:2px 3px;text-align:center;font-weight:700;">รวม</td>
+          <td style="border:0.5px solid #888;padding:2px 3px;"></td>
+          <td style="border:0.5px solid #888;padding:2px 3px;text-align:right;font-weight:700;">${fmt(b.grand)}</td>
         </tr>
       </tfoot>
     </table>
@@ -1154,12 +1276,13 @@ function printHalf(b,copy){
   const MIN_ROWS = 10;
   const dataRows = b.items.map(it=>`<tr>
     <td class="tl">${it.name}</td>
-    <td style="text-align:center;">${wrapAt(it.formula+"="+it.computed,20)}</td>
-    <td style="text-align:center;">${fmt(it.price)}</td>
-    <td style="text-align:right;">${fmt(it.total)}</td>
+    <td style="text-align:left;overflow-wrap:break-word;word-break:break-all;">${it.formula}</td>
+    <td style="text-align:center;overflow:hidden;white-space:nowrap;">${it.computed}</td>
+    <td style="text-align:center;overflow:hidden;white-space:nowrap;">${fmt(it.price)}</td>
+    <td style="text-align:right;overflow:hidden;white-space:nowrap;">${fmt(it.total)}</td>
   </tr>`).join('');
   const emptyCount = Math.max(0, MIN_ROWS - b.items.length);
-  const emptyRows = Array(emptyCount).fill(`<tr style="height:5mm;"><td>&nbsp;</td><td></td><td></td><td></td></tr>`).join('');
+  const emptyRows = Array(emptyCount).fill(`<tr style="height:5mm;"><td>&nbsp;</td><td></td><td></td><td></td><td></td></tr>`).join('');
   return `<div class="ph" style="display:flex;flex-direction:column;">
     <div class="ph-top">
       <img src="data:image/jpeg;base64,${LOGO}" alt="logo" style="height:12mm;width:auto;object-fit:contain;border:0.3mm solid #888;flex-shrink:0;">
@@ -1172,14 +1295,21 @@ function printHalf(b,copy){
         display:flex;align-items:center;justify-content:center;flex-shrink:0;align-self:stretch;
         min-width:12mm;">${copy}</div>
     </div>
-    <table class="ptable" style="flex:1;">
+    <table class="ptable" style="font-size:${getSt('bill-print')}pt;">
+      <colgroup>
+        <col style="width:24%;">
+        <col style="width:31%;">
+        <col style="width:15%;">
+        <col style="width:15%;">
+        <col style="width:15%;">
+      </colgroup>
       <thead>
-        <tr><th>รายการ</th><th>น้ำหนัก</th><th>ราคา</th><th>รวม</th></tr>
+        <tr><th>รายการ</th><th>น้ำหนัก</th><th>คิด</th><th>ราคา</th><th>รวม</th></tr>
       </thead>
       <tbody>${dataRows}${emptyRows}</tbody>
       <tfoot>
         <tr class="sum">
-          <td colspan="2" style="text-align:center;"><b>รวม</b></td>
+          <td colspan="3" style="text-align:center;"><b>รวม</b></td>
           <td></td>
           <td style="text-align:right;"><b>${fmt(b.grand)}</b></td>
         </tr>
@@ -1704,6 +1834,83 @@ function installPWA(){
     alert('วิธีติดตั้ง: กด 3 จุด มุมขวาบน > เพิ่มลงในหน้าจอหลัก > ติดตั้ง');
   }
 }
+
+// ═══ SETTINGS ═══
+const ST_KEYS = {
+  'home-header': {label:'หัวกระดาษ', sizes:[8,10,12,14,16], unit:'px', def:10},
+  'home-btn':    {label:'ปุ่มกด',     sizes:[12,14,15,17,19], unit:'px', def:15},
+  'pur-name':    {label:'ชื่อลูกค้า', sizes:[12,14,15,17,19], unit:'px', def:15},
+  'pur-items':   {label:'รายการ',     sizes:[12,14,15,17,19], unit:'px', def:15},
+  'pur-search':  {label:'เลือกสินค้า',sizes:[12,14,16,18,20], unit:'px', def:16},
+  'bill-preview':{label:'Preview',   sizes:[9,10,11,12,13],  unit:'px', def:11},
+  'bill-print':  {label:'พิมพ์จริง', sizes:[8,10,12,14,16],   unit:'pt', def:9},
+  'custs':       {label:'ลูกค้า',    sizes:[12,14,15,17,19], unit:'px', def:15},
+  'prods':       {label:'สินค้า',    sizes:[12,14,15,17,19], unit:'px', def:15},
+};
+const ST_LABELS = ['เล็กมาก','เล็ก','ปกติ','ใหญ่','ใหญ่มาก'];
+
+function getSt(key){ return parseFloat(localStorage.getItem('st-'+key)) || ST_KEYS[key].def; }
+function setSt(key, val){
+  val = parseFloat(val);
+  if(!val || val < 6) return;
+  localStorage.setItem('st-'+key, val);
+  applyAllSt();
+  renderStBtns(key);
+  // sync input value after re-render
+  const inp = document.getElementById('st-inp-'+key);
+  if(inp) inp.value = val;
+}
+
+function applyAllSt(){
+  const r = document.documentElement.style;
+  Object.keys(ST_KEYS).forEach(k => {
+    const v = getSt(k);
+    const u = ST_KEYS[k].unit;
+    r.setProperty('--fs-'+k, v+u);
+  });
+  // prod-search input
+  const ps = document.getElementById('prod-search-input');
+  if(ps) ps.style.fontSize = getSt('pur-search')+'px';
+  // pur-name label & input
+  const purName = document.getElementById('cust-inp');
+  if(purName) purName.style.fontSize = getSt('pur-name')+'px';
+  // billHalf preview tables
+  document.querySelectorAll('#preview-area table').forEach(t => t.style.fontSize = getSt('bill-preview')+'px');
+  // ptable (print)
+  const bpfs = getSt('bill-print');
+  r.setProperty('--fs-bill-print', bpfs+'pt');
+  document.querySelectorAll('.ptable').forEach(t => t.style.fontSize = bpfs+'pt');
+}
+
+function renderStBtns(key){
+  const el = document.getElementById('st-'+key);
+  if(!el) return;
+  const cfg = ST_KEYS[key];
+  const cur = getSt(key);
+  const presetBtns = cfg.sizes.map(s =>
+    `<button class="st-btn${s===cur?' active':''}" onclick="setSt('${key}',${s})">${s}</button>`
+  ).join('');
+  el.innerHTML = presetBtns +
+    `<span style="color:var(--border);font-size:18px;margin:0 2px;">|</span>` +
+    `<input class="st-inp" id="st-inp-${key}" type="number" min="6" max="72" step="1"
+      value="${cur}" onchange="setSt('${key}',parseFloat(this.value)||${cfg.def})"
+      title="พิมพ์ขนาดเอง">` +
+    `<span class="st-unit">${cfg.unit}</span>`;
+}
+
+function openSettings(){
+  document.getElementById('settings-modal').style.display='flex';
+  Object.keys(ST_KEYS).forEach(k => renderStBtns(k));
+}
+function closeSettings(){
+  document.getElementById('settings-modal').style.display='none';
+}
+document.getElementById('settings-modal').addEventListener('click',function(e){
+  if(e.target===this) closeSettings();
+});
+
+// โหลดค่าที่บันทึกไว้ตั้งแต่เริ่ม
+applyAllSt();
 </script>
 </body>
 </html>
