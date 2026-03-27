@@ -1214,13 +1214,14 @@ function billHalf(b,copy){
   const fs = getSt('bill-preview');
   const dataRows = b.items.map(it=>`<tr>
     <td style="text-align:center;padding:2px 3px;overflow:hidden;overflow-wrap:break-word;word-break:break-word;">${it.name}</td>
-    <td style="text-align:center;padding:2px 3px;overflow-wrap:break-word;word-break:break-all;">${it.formula}</td>
+    <td style="text-align:left;padding:2px 3px;overflow-wrap:break-word;word-break:break-all;border-right:0.5px dashed #aaa;">${it.formula}</td>
+    <td style="text-align:center;padding:2px 3px;white-space:nowrap;font-weight:700;">${it.computed>0?'= '+fmt1(it.computed):''}</td>
     <td style="text-align:center;padding:2px 3px;overflow:hidden;white-space:nowrap;">${fmt1(it.price)}</td>
     <td style="text-align:center;padding:2px 3px;overflow:hidden;white-space:nowrap;">${fmt1(it.total)}</td>
   </tr>`).join('');
   const emptyCount = Math.max(0, MIN_ROWS - b.items.length);
   const emptyRows = Array(emptyCount).fill(`<tr style="height:16px;">
-    <td style="padding:2px 3px;">&nbsp;</td><td></td><td></td><td></td>
+    <td style="padding:2px 3px;">&nbsp;</td><td style="border-right:0.5px dashed #aaa;"></td><td></td><td></td><td></td>
   </tr>`).join('');
   return `<div class="bhalf" style="display:flex;flex-direction:column;">
     <div class="bhtop">
@@ -1237,14 +1238,15 @@ function billHalf(b,copy){
     <table style="width:100%;border-collapse:collapse;font-size:${fs}px;flex:1;table-layout:fixed;">
       <colgroup>
         <col style="width:30%;">
-        <col style="width:40%;">
+        <col style="width:29%;">
         <col style="width:15%;">
-        <col style="width:15%;">
+        <col style="width:13%;">
+        <col style="width:13%;">
       </colgroup>
       <thead>
         <tr style="background:#e0e0e0;">
           <th style="border:0.5px solid #888;padding:2px 3px;text-align:center;font-weight:700;">รายการ</th>
-          <th style="border:0.5px solid #888;padding:2px 3px;text-align:center;font-weight:700;">น้ำหนัก</th>
+          <th colspan="2" style="border:0.5px solid #888;padding:2px 3px;text-align:center;font-weight:700;">น้ำหนัก</th>
           <th style="border:0.5px solid #888;padding:2px 3px;text-align:center;font-weight:700;">ราคา</th>
           <th style="border:0.5px solid #888;padding:2px 3px;text-align:center;font-weight:700;">รวม</th>
         </tr>
@@ -1254,7 +1256,7 @@ function billHalf(b,copy){
       </tbody>
       <tfoot>
         <tr style="background:#ddd;border-top:1px solid #555;">
-          <td colspan="2" style="border:0.5px solid #888;padding:2px 3px;text-align:center;font-weight:700;">รวม</td>
+          <td colspan="3" style="border:0.5px solid #888;padding:2px 3px;text-align:center;font-weight:700;">รวม</td>
           <td style="border:0.5px solid #888;padding:2px 3px;"></td>
           <td style="border:0.5px solid #888;padding:2px 3px;text-align:center;font-weight:700;">${fmt1(b.grand)}</td>
         </tr>
@@ -1274,12 +1276,13 @@ function printHalf(b,copy){
   const MIN_ROWS = 10;
   const dataRows = b.items.map(it=>`<tr>
     <td style="text-align:center;overflow:hidden;overflow-wrap:break-word;word-break:break-word;">${it.name}</td>
-    <td style="text-align:center;overflow-wrap:break-word;word-break:break-all;">${it.formula}</td>
+    <td style="text-align:left;overflow-wrap:break-word;word-break:break-all;border-right:0.3mm dashed #aaa;">${it.formula}</td>
+    <td style="text-align:center;white-space:nowrap;font-weight:700;">${it.computed>0?'= '+fmt1(it.computed):''}</td>
     <td style="text-align:center;overflow:hidden;white-space:nowrap;">${fmt1(it.price)}</td>
     <td style="text-align:center;overflow:hidden;white-space:nowrap;">${fmt1(it.total)}</td>
   </tr>`).join('');
   const emptyCount = Math.max(0, MIN_ROWS - b.items.length);
-  const emptyRows = Array(emptyCount).fill(`<tr style="height:5mm;"><td>&nbsp;</td><td></td><td></td><td></td></tr>`).join('');
+  const emptyRows = Array(emptyCount).fill(`<tr style="height:5mm;"><td>&nbsp;</td><td style="border-right:0.3mm dashed #aaa;"></td><td></td><td></td><td></td></tr>`).join('');
   return `<div class="ph" style="display:flex;flex-direction:column;">
     <div class="ph-top">
       <img src="data:image/jpeg;base64,${LOGO}" alt="logo" style="height:12mm;width:auto;object-fit:contain;border:0.3mm solid #888;flex-shrink:0;">
@@ -1295,17 +1298,18 @@ function printHalf(b,copy){
     <table class="ptable" style="font-size:${getSt('bill-print')}pt;">
       <colgroup>
         <col style="width:30%;">
-        <col style="width:40%;">
+        <col style="width:29%;">
         <col style="width:15%;">
-        <col style="width:15%;">
+        <col style="width:13%;">
+        <col style="width:13%;">
       </colgroup>
       <thead>
-        <tr><th>รายการ</th><th>น้ำหนัก</th><th>ราคา</th><th>รวม</th></tr>
+        <tr><th>รายการ</th><th colspan="2">น้ำหนัก</th><th>ราคา</th><th>รวม</th></tr>
       </thead>
       <tbody>${dataRows}${emptyRows}</tbody>
       <tfoot>
         <tr class="sum">
-          <td colspan="2" style="text-align:center;"><b>รวม</b></td>
+          <td colspan="3" style="text-align:center;"><b>รวม</b></td>
           <td></td>
           <td style="text-align:center;"><b>${fmt1(b.grand)}</b></td>
         </tr>
