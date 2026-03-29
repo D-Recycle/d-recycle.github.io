@@ -950,8 +950,6 @@ function calc(s){
     return(isFinite(v)&&v>0)?Math.round(v*10000)/10000:null;}
   catch{return null;}
 }
-function closeOv(id){document.getElementById(id).classList.remove('show');}
-function openOv(id){document.getElementById(id).classList.add('show');}
 
 // ═══ NAVIGATION ═══
 // Page history stack for back button
@@ -973,12 +971,28 @@ function go(id){
   }
 }
 
+function openOv(id){
+  document.getElementById(id).classList.add('show');
+  history.pushState({overlay:id}, '', '');
+}
+function closeOv(id){
+  document.getElementById(id).classList.remove('show');
+}
+
 // Handle Android back button
 window.addEventListener('popstate', function(e){
+  // Check if any overlay is open — close it first
+  const overlays = document.querySelectorAll('.overlay');
+  for(let ov of overlays){
+    if(ov.classList.contains('show')){
+      ov.classList.remove('show');
+      return;
+    }
+  }
+  // No overlay open — handle page navigation
   if(_pageStack.length > 1){
-    _pageStack.pop(); // remove current
+    _pageStack.pop();
     const prev = _pageStack[_pageStack.length-1];
-    // Go back without pushing new state
     document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
     document.getElementById(prev).classList.add('active');
     closeCustDD();
@@ -987,7 +1001,6 @@ window.addEventListener('popstate', function(e){
     if(prev==='p-customers')renderCusts();
     if(prev==='p-products')renderProds();
   } else {
-    // Already at home - let Android handle (exit or confirm)
     if(confirm('ออกจากแอปหรือไม่?')){
       history.back();
     } else {
