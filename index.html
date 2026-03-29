@@ -1387,15 +1387,21 @@ function openEditBill(id){
     </div>
     ${b.items.map((it,ii)=>`
       <div class="card" style="margin-bottom:8px;">
-        <div class="ctit" style="font-size:13px;">📦 ${it.name}
-          <span style="font-size:12px;color:var(--muted);font-weight:400;"> — ${fmt(it.price)} ฿/กก.</span>
-        </div>
+        <div class="ctit" style="font-size:13px;">📦 ${it.name}</div>
         <div class="wzone">
           <div class="wzlbl">⚖️ น้ำหนัก — คำนวณทันที</div>
           <input class="wf" type="text" id="ewf${ii}" value="${it.formula}" oninput="liveEdit(${ii})">
-          <div style="font-size:13px;color:var(--g1);margin-top:5px;font-weight:600;" id="eprev${ii}">
-            ✅ ${it.formula} = ${it.computed} กก. → ${fmt(it.total)} ฿
-          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;margin-top:6px;flex-wrap:wrap;">
+          <span style="font-size:12px;font-weight:600;color:var(--muted);">💰 ราคา (฿/กก.)</span>
+          <input type="number" id="epf${ii}" value="${it.price}" min="0" step="0.5"
+            style="width:90px;border:1.5px solid var(--o5);border-radius:8px;padding:4px 8px;
+            font-size:13px;font-weight:700;color:var(--text);background:#fff;text-align:center;outline:none;"
+            oninput="liveEdit(${ii})">
+          <span style="font-size:12px;color:var(--muted);">฿</span>
+        </div>
+        <div style="font-size:13px;color:var(--g1);margin-top:6px;font-weight:600;" id="eprev${ii}">
+          ✅ ${it.formula} = ${it.computed} กก. × ${fmt(it.price)} ฿ → ${fmt(it.total)} ฿
         </div>
       </div>`).join('')}`;
   openOv('ov-edit');
@@ -1403,16 +1409,25 @@ function openEditBill(id){
 function liveEdit(ii){
   const b=bills.find(x=>x.id===editBid);
   const raw=document.getElementById('ewf'+ii).value;
+  const priceInp=document.getElementById('epf'+ii);
+  const price=parseFloat(priceInp&&priceInp.value)||b.items[ii].price;
   const v=calc(raw);
   const prev=document.getElementById('eprev'+ii);
   if(!raw.trim()){prev.style.color='var(--muted)';prev.textContent='💡 พิมพ์สูตรน้ำหนัก';}
   else if(v){
     prev.style.color='var(--g1)';
-    prev.textContent=`✅ ${raw} = ${v} กก. → ${fmt(v*b.items[ii].price)} ฿`;
+    prev.textContent=`✅ ${raw} = ${v} กก. × ${fmt(price)} ฿ → ${fmt(v*price)} ฿`;
     b.items[ii].formula=raw;b.items[ii].computed=v;
-    b.items[ii].total=v*b.items[ii].price;
+    b.items[ii].price=price;
+    b.items[ii].total=v*price;
     b.grand=b.items.reduce((s,x)=>s+x.total,0);
   }else{prev.style.color='var(--danger)';prev.textContent='⚠️ สูตรไม่ถูกต้อง';}
+  // update price even if formula unchanged
+  if(v && raw.trim()){
+    b.items[ii].price=price;
+    b.items[ii].total=v*price;
+    b.grand=b.items.reduce((s,x)=>s+x.total,0);
+  }
 }
 function saveEdit(){saveData();closeOv('ov-edit');renderBills();alert('✅ บันทึกแล้ว');}
 
